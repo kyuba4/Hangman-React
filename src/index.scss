@@ -1,0 +1,257 @@
+// General Styling
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: "Poppins", sans-serif;
+}
+
+html {
+   height: 100%;
+}
+
+body {
+   height: 100%;
+   background: var(--bg-color);
+   transition: background 300ms;
+}
+
+#app {
+   width: 100%;
+   height: 100%;
+   padding: 15px;
+}
+
+.light-theme {
+   --text-color: #323232;
+   --bg-color: #fff;
+}
+
+.dark-theme {
+   --text-color: #fff;
+   --bg-color: #323232;
+}
+
+// Home page styling
+h1 {
+  color: var(--text-color);
+  font-size: 5rem;
+  text-align: center;
+  transition: color 300ms;
+}
+
+.switch-wrap {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.chances-left,
+.word,
+.clue {
+  color: var(--text-color);
+  transition: color 300ms;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.loader-wrap {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.chances-left {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.clue {
+  font-size: 1.1rem;
+}
+
+.word {
+  margin: 40px 0;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.hangman-img {
+  margin: 0 auto;
+  position: relative;
+  width: 100px;
+  height: 175px;
+
+  img {
+     position: absolute;
+     left: 30%;
+     width: 100%;
+     height: 100%;
+  }
+}
+
+.msg {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+
+  span {
+     color: var(--text-color);
+     font-size: 2rem;
+     transition: color 300ms;
+  }
+
+  &--lost {
+     color: red;
+  }
+
+  &--won {
+     color: greenyellow;
+  }
+}
+
+@media (max-width: 500px) {
+  h1 {
+     font-size: 3rem;
+  }
+
+  .chances-left {
+     font-size: 1.4rem;
+  }
+
+  .clue {
+     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .switch-wrap {
+     top: 15px;
+     right: 10px;
+     transform: scale(0.9);
+  }
+}
+
+// Reset Game
+.reset {
+  display: flex;
+  justify-content: center;
+  margin: 3rem auto;
+  padding: 10px 20px;
+  border: 0;
+  outline: 0;
+  background: var(--text-color);
+  color: var(--bg-color);
+  cursor: pointer;
+  box-shadow: 0 0 3px 0 var(--text-color);
+  transition: all 300ms;
+  border-radius: 5px;
+
+  &:hover {
+     opacity: 0.8;
+  }
+}
+
+// Keyboard
+.keyboard {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  .button {
+     text-align: center;
+     width: 50px;
+     height: 50px;
+     font-size: 1.3rem;
+     border-radius: 5px;
+     border: 0;
+     outline: 0;
+     background: transparent;
+     cursor: pointer;
+     box-shadow: 0 0 3px 0 var(--text-color);
+     color: var(--text-color);
+     transition: all 300ms;
+     text-transform: uppercase;
+
+     &:hover {
+        transform: scale(0.95);
+     }
+
+     &:disabled {
+        background: var(--text-color);
+        color: var(--bg-color);
+        pointer-events: none;
+        transform-origin: center;
+        transform: scale(0.9) rotateY(360deg);
+     }
+  }
+
+  @media (max-width: 650px) {
+     gap: 15px;
+
+     .button {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        padding: 0;
+     }
+  }
+}
+
+// Theme Switcher
+.change-theme-txt {
+  font-size: 0.8rem;
+  color: var(--text-color);
+  transition: color 300ms;
+
+  @media (max-width: 650px) {
+     display: none;
+  }
+}
+
+.switch-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.switch {
+  display: none;
+}
+
+.switch + div {
+  width: 40px;
+  height: 16px;
+  border-radius: 12px;
+  background-color: #fde68a;
+  transition: background-color 200ms;
+  cursor: pointer;
+}
+
+.switch:checked + div {
+  background-color: #111827;
+}
+
+.switch + div > div {
+  width: 16px;
+  height: 16px;
+  border-radius: 23px;
+  background-color: #fff;
+  transition: transform 250ms;
+  pointer-events: none;
+  box-shadow: 0 0 5px 0 #212121;
+}
+
+.switch:checked + div > div {
+  transform: translateX(28px);
+}

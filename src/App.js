@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import Keyboard from "./components/Keyboard";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 
 function App() {
+  const handleClick = (key) => {
+    console.log(key);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Hangman</h1>
+      <div className="switch-wrap">
+        <ThemeSwitcher />
+      </div>
+      <Keyboard handleClick={handleClick} />
     </div>
   );
 }
