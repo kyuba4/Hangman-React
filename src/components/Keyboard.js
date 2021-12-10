@@ -7,7 +7,7 @@ function Keyboard({ handleClick }) {
     <div className="keyboard">
       {letters.split("").map((key) => {
         return (
-          <button className="button" key={key} onClick={() => handleClick(key)}>
+          <button className="button" id={key} key={key} onClick={() => handleClick(key)}>
             {key}
           </button>
         );
