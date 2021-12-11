@@ -102,11 +102,12 @@ function App() {
         <ThemeSwitcher />
       </div>
       <div>
-        {loading === true ? (
+        {loading && (
           <div className="loader-wrap">
             <Loader type="TailSpin" color="var(--text-color)" width="100" height="100" />
           </div>
-        ) : (
+        )}
+        {!loading && (
           <>
             <div className="chances-left">Chances Left: {chancesLeft}</div>
             <div className="clue">Clue: {clue}</div>
@@ -114,28 +115,28 @@ function App() {
               <img src={`assets/${image}.jpg`} alt="Hangman" />
             </div>
             <div className="word">{word}</div>
-
-            {gameLost === true || gameWon === true ? (
-              <div className="msg">
-                {gameLost === true ? (
-                  <div className="msg msg--lost">
-                    You Lost <br></br>
-                    <span>The word was: {guessingWord}</span>
-                  </div>
-                ) : null}
-                {gameWon === true ? (
-                  <div className="msg msg--won">
-                    Congrat's! <br></br>
-                    <span>You Won!</span>
-                  </div>
-                ) : null}
-              </div>
-            ) : null}
-
-            {gameLost === false && gameWon === false ? <Keyboard handleClick={handleClick} /> : null}
-            <ResetGame resetGame={resetGame} />
           </>
         )}
+        {(gameLost || gameWon) && (
+          <div className="msg">
+            {gameLost && (
+              <div className="msg msg--lost">
+                You Lost <br></br>
+                <span>The word was: {guessingWord}</span>
+              </div>
+            )}
+            {gameWon && (
+              <div className="msg msg--won">
+                Congrat's! <br></br>
+                <span>You Won!</span>
+              </div>
+            )}
+          </div>
+        )}
+
+        {!gameLost && !gameWon && !loading && <Keyboard handleClick={handleClick} />}
+
+        {!loading && <ResetGame resetGame={resetGame} />}
       </div>
     </>
   );
